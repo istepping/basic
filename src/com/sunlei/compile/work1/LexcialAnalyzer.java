@@ -1,5 +1,7 @@
 package com.sunlei.compile.work1;
 
+import com.sunlei.compile.work6.Node;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.Map;
 
 import static com.sunlei.utils.Assist.output;
 import static com.sunlei.utils.Assist.outputVar;
+import static com.sunlei.utils.Assist.print;
 
 /**
  * @author sunLei on 2018/9/15
@@ -88,6 +91,7 @@ public class LexcialAnalyzer {
             }else if (isID(word)){
                 outputList.add("id");
             }else if(isInMap(word)){
+                //操作符
                 outputList.add(word);
             }else if(isNumber(word)){
                 //数字
@@ -105,6 +109,44 @@ public class LexcialAnalyzer {
         }
         return outputList;
     }
+    /**为语法制导的输出*/
+    public List<Node> analyzeForDriven(String input){
+        init();
+        String[] words=input.split("\\s+");
+        List<Node> outputList=new ArrayList<>();
+        for(String word:words){
+            Node node=new Node();
+            if(isKeyWorld(word)){
+                node.setNode(word);
+                outputList.add(node);
+            }else if (isID(word)){
+                node.setNode("id");
+                outputList.add(node);
+            }else if(isInMap(word)){
+                //操作符
+                node.setNode(word);
+                outputList.add(node);
+            }else if(isNumber(word)){
+                //数字
+                node.setNode("id");
+                node.setVal(Integer.parseInt(word));
+                outputList.add(node);
+            }
+            else {
+                //错误
+                output(markMap.get("error"),"error!");
+                outputList.clear();
+                break;
+            }
+        }
+        if(outputList.size()>0){
+            Node node=new Node();
+            node.setNode("$");
+            outputList.add(node);
+        }
+        return outputList;
+    }
+
     /**合法的变量名包括关键字*/
     private boolean isID(String id){
         return id.matches("^[a-zA-Z][_a-zA-Z0-9]*$");
