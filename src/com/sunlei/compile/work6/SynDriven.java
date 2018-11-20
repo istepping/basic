@@ -101,9 +101,9 @@ public class SynDriven {
         graph[0][9] = "s5";
         graph[5][9] = "s4";
         graph[10][9] = "14";
-        graph[1][10] = "r6";
-        graph[2][10] = "r7";
-        graph[6][10] = "r15";
+        graph[1][10] = "s6";
+        graph[2][10] = "s7";
+        graph[6][10] = "s15";
         graph[1][11] = "r1";
         graph[2][11] = "r1";
         graph[3][11] = "s8";
@@ -196,9 +196,10 @@ public class SynDriven {
             print("归约");
             output1(grammar);
             //弹栈
+            print("弹栈"+grammar[1]);
             while (!mStack.pop().equals(grammar[1])) {
-            }
 
+            }
             int x = rowMap.get(grammar[0]);
             int y = Integer.parseInt(mStack.get(mStack.size() - 1));
             String goTo = graph[x][y];

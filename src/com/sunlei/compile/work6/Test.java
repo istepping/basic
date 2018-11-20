@@ -13,3 +13,4 @@ public class Test {
         synDriven.parse();
     }
 }
+//2 * ( 3 + 4 * 2 )
