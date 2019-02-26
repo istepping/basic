@@ -5,10 +5,10 @@ package com.sunlei.study_static;
  * @version 1.0
  */
 public class A {
+    private static String staticStr=getStaticStr();
     static{
         System.out.println("A static");
     }
-    private static String staticStr=getStaticStr();
     private String str=getStr();
     {
         System.out.println("A 实例块");
