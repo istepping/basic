@@ -4,19 +4,19 @@ package com.sunlei.study_static;
  * @author sunLei on 2019/2/24 22:52
  * @version 1.0
  */
-public class B extends A{
-    private static String staticStr=getStaticStr();
-    static {
-        System.out.println("B 静态块");
-    }
-    {
-        System.out.println("B 实例块");
-    }
-    public B(){
-        System.out.println("B 构造方法");
-    }
-    private String str=getStr();
-    private static String getStaticStr(){
+        public class B extends A{
+            private static String staticStr=getStaticStr();
+            static {
+                System.out.println("B 静态块");
+            }
+            {
+                System.out.println("B 实例块");
+            }
+            public B(){
+                System.out.println("B 构造方法");
+            }
+            private String str=getStr();
+            private static String getStaticStr(){
         System.out.println("B 静态属性初始化");
         return null;
     }
